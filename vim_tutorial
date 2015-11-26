@@ -1,0 +1,150 @@
+Chapter 1: Basic Editing
+In this chapter, you can learn the following:
+	The four basic movement commands
+	How to insert and delete text
+	How to get help
+	Exiting the editor
+
+Before You Start
+If you are running on UNIX or Linux, execute the following command:
+$touch ~/.vimrc
+By creating a ~/.vimrc, you tell Vim that you want to use it in Vim mode. If this file is not present, Vim runs in Vi-compatibility mode and you lose access to many of the advanved Vim features.
+
+You also can enabled the advanced features form withn Vim at any time with this command
+:set nocompatible
+
+Running Vim for the First Time
+To start Vim, enter this command:
+$vim file.txt
+Vim starts editing a file called file.txt. Because this ia a new file, you get a blank window.
+
+The Vim Command
+Modes
+The Vim editor is a modal editor. That means that the editor behaves differently, depending on which mode you are in. If the bottom of the screen displays the filename or is blank, you are in normal mode. If you are in insert mode, the indicator displyas --INSERT--; and if you are in visula mode, the indicator shows --VISUAL--.
+
+Insert Text
+To enter text, you need to be in insert mode. Type i, and notice that the lower left of the screen changes to --INSERT--.
+
+Deleting Characters
+To delete a character, move the cursor over it and type x.
+
+Undo and Redo
+The u command undoes the last edit. If you undo too many times, you can press ctrl-R (redo) to reverse the preceding command. In other words, it undoes the undo. The U (undo line) command undoes all the changes made on the last line that was edited. Typing this command twice cancels the preceding U.
+
+Using a Count to Edit Faster
+
+Chapter 2: Editing a Little Faster
+This chapter covers some additional commands that enable you to edit more efficiently. These command include the following:
+	Additional movement commands
+	Quick searches along a single line
+	Additional delete and change commands
+	The repeat command
+	Keyboard macros 
+	Digraphs
+
+Word Movement
+To move the cursor forward one word, use the w command. The b command moves backward one word. Like most Vim commands, you can use a numberic prefix to move past multiple words.
+
+Moving to the Start or End of a Line
+The $ command moves the cursor to the end of a line. The $ command takes a numeric argument as well. If present, it causes the editor to move to the end of the next line.
+The ^ command moves to the first nonblank character of the line. The 0(zero) command moves to the first character of the line.
+
+Searching Along a Single Line
+The command fx seraches the line for the single character x. You can specify a count; therefore, you can space forward the five words by using the command 5f<space>.
+The F command searches to the left.
+The tx command works like the fx command, except it stops one character before the indicated character. The backword version of this command is Tx.
+
+To abort a search, press <Esc> as the search key.
+
+Moving to a Specific Line
+The G command, with an argument, positions you at the given line number. For example, 3G puts you on line 3. With no argumnet, it positions you at the end of line.
+Another way to move through the file is the % command. The 50% command moves you through the file.
+
+Telling Where You are in a File
+The first is to turn on line numbering with the following command
+:set number
+
+The ctrl-g command display a status line that indicates where you are in the file.
+
+Scroling Up and Down
+The ctrl-U command scrolls up half a screen of text. The ctrl-d command scrolls you down half a screen.
+
+Deleting Text
+Suppose you want to delete part of a line, say a word. The way to do that is to start visual mode with the v command. You can now highlight the text you want to delete with the cursor movement commands. Finally we need to thell Vim what to do with the text, so we enter the d command to delete it. 
+
+To delete a word in normal mode you use the command dw. The d3w command deletes three words. The d$ command deletes from the cursor to the end of the line.
+
+Changing Text
+The c command changes text. It acts just like the d command, except it leaves you in insert mode. The cc command works on the entire line. the c$ or C change from the cursor to the end of the line.
+
+The . Command
+The . command repeates the last delete or change command.
+
+Joining Lines
+To join a set of lines in visual mode, start visual mode highlight the lines you wish to join, an press J. All highlighted lines will be put together in one big line.
+In normal mode, the J command joins the current line with the next one.
+
+Replacing Characters
+The r{char} command replaces the character under the cursor with {char}
+
+Changing Case
+The ~ command changes a character's case. It changes uppercase to lowercase and vice versa.
+
+Keyboard Macros
+The q{character} command records keystrokes into the register named character. To finish recording, just type a q command. You can now execute the macro by typing the @{character} command.
+
+Digraphs
+Some characters are not on keyboard. To type these letters in vim you use digraphs, where two characters represent one. To find out what digraphs are available, use the following command:
+:digraphs
+
+Chapter 3. Searching
+3.1 Simple Searches
+To search for a string, use the /string command. Another way to find the next match is with the n command.
+
+3.2 Search History
+After you do a number of searches, you can use the <Up> and <Down> keys to select one of your recent searches.
+If you execute the command q/, Vim will open up a search history window. If you wish to abort the search and return to command mode, use the ZZ or :q commands.
+
+3.3 Searching Options
+3.3.1 Highlighting
+The following command causes Vim to hightlight any strings found matching the search pattern:
+:set hlsearch
+
+To turn off search highlighting, use this command:
+:set nonhlsearch
+
+To clear the current highlighting, use the following command:
+:nohlsearch
+
+3.3.2 Incremental Searches
+When you use the following command, the editor performs incremental searches:
+:set insearch
+The editor starts searching as soon as you type the first character of the string. Each additional character further refines the search.
+
+3.3.3 Searching Backward
+The reverse search command (?) searches backward. The n command repeats the last search. If a reverse search was the last one used, the n command searches in the reverse direction. If the last search was a forward search, the n command searches forward.
+
+3.3.4 Reverse Search History
+Like forward search (?) you can use the <Up> and <Down> keys to go through the search history.
+
+3.4 Changing Direction
+You can turn around and search in the reverse direction by using the ? command. The n command repeats the search in the same direction. The N command reverse the direction on the search and repeats it.
+
+3.5 Basic Regular Expression
+3.5.1 The Beginning (^) and End ($) of a Line
+The ^ character matches the beginning of a line. The $ character matches the end of a line.
+
+3.5.2 Match Any Single Character (.)
+The character . matches any single character.
+
+
+
+
+
+
+
+
+
+
+
+ 
