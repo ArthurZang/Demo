@@ -221,6 +221,78 @@ This command automatically closes the current file and opens the new one.
 4.8 The :view command
 It works just like the :vi command, except the new file is opened in read-only mode.
 
+4.9 Dealing with Multiple Files
+You can specify multiple files on the command line.
+$vim one.c two.c three.c
+
+To edit the next file, you need to change files using the :next command.
+
+4.10 Matching
+Though not exactly a search command, the :match command can be very useful in finding test. It causes all text that matches a given pattern to be highlighted on the screen.
+
+Chapter 5. Windows and Tabs
+5.1 Opening a New Window
+The easiest way to open a new window is to use the following command:
+:split
+This command splits the screen into two windows. Both are editing the same file.
+
+Using the command ctrl-w ctrl-w, you can switch the window.
+
+To divide the screen vertically use the :vsplit command.
+
+The following command opens a second window and starts editing the given file
+:split file
+
+The :split command can take a number argument. If specified, this will be the number of lines in the new window.
+
+5.2 The :new command
+The :new command works just like the :split command except that the ;split command splits the current window and displays the current file in both windows while :new opens a window containing a new, empty file.
+
+5.3 Changing Window Size
+The command count ctrl-w+ increase the windows size by count, default=1. Simailary count ctrl-w- decreases the window's size by count. The command ctrl-w= makes all the windows the same size.
+
+The :resize command can be used to change the height of the window from the command line. The argument to this command can be simple number in which case the window is set to that size. If the argument begins wit a plus or minus, then the window in increased or decrease in size. If no argument is given to the :resize command, the window is enlarged to it's maximum height.
+
+5.4 Buffers
+The Vim editor uses the term buffer to describe a file being edited. Actually, a buffer is a copy of the file that you edit. A buffer can have three states:
+1) Active: Appears onscreen
+2) Hidden: A file is being edited, but does not appear onscreen
+3) Inactive: The file is not being edited, but keep the information about it anyway.
+
+To find a list of buffers, use the following command:
+:buffers
+
+The first column is the buffer number. The second is a serials of flags indicating the state of the buffer. The third is the name of the file associated with the buffer. The state flags are
+	- Inacitve buffer.
+	h Buffer is hidden.
+	% Current buffer.
+	# Alternate buffer.
+	+ file has been modified. 
+
+You can select which buffer to use by executing the following command:
+:buffer number 
+:buffer file
+
+5.5 Basic Tabbed Editing
+
+Chapter 6. Basic Visual Mode
+6.1 Entering Visual Mode
+To enter visual mode, type the v command.
+
+6.2 The Three Visual Modes
+The v command starts a character-by-character visual mode. All the characters from the start to the cursor are highlighted. The V command starts linewise mode. You can hightlight only full lines in this mode. To hightligth a rectangle on the screen, use ctrl-v.
+
+6.3 Editing with Visual Mode
+The d command deletes the highlighted text. The D command deletes the highlighted lines, even if only part of a line is highlighted. 
+The y command places the highlighted text into a register. 
+The c command deletes the highlighted text and starts insert mode.
+
+6.4 Commands for Programmers
+The > command indents the selected lines by one "shift width". The < does the process in reverse. The = command indents the text the proper amount according to what vim think is the proper information for you program.
+
+Chapter 7. Commands for Programers
+
+
 
 
 
